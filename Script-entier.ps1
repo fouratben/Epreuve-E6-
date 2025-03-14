@@ -5,10 +5,10 @@ $users = Import-Csv -Delimiter ";" -Path "C:\docs\script\import.csv"
 
 #********************Création des OU********************************
 
-New-ADOrganizationalUnit -Name "Employés" -Path "dc=imcsio2,dc=fr"
-New-ADOrganizationalUnit -Name "Londres" -Path "ou=Employés,dc=imcsio2,dc=fr"
-New-ADOrganizationalUnit -Name "Paris" -Path "ou=Employés,dc=imcsio2,dc=fr"
-New-ADOrganizationalUnit -Name "Berlin" -Path "ou=Employés,dc=imcsio2,dc=fr"
+New-ADOrganizationalUnit -Name "Employés" -Path "dc=m2l,dc=lan"
+New-ADOrganizationalUnit -Name "Londres" -Path "ou=Employés,dc=m2l,dc=lan"
+New-ADOrganizationalUnit -Name "Paris" -Path "ou=Employés,dc=m2l,dc=lan"
+New-ADOrganizationalUnit -Name "Berlin" -Path "ou=Employés,dc=m2l,dc=lan"
 
 #*******Ajout de chaque utilisateur dans son OU spécifique*******
 
@@ -24,9 +24,9 @@ foreach ($user in $users){
     
 
     switch($user.office){
-        "Paris" {$office = "OU=Paris,OU=Employés,dc=imcsio2,DC=fr"}
-        "Berlin" {$office = "OU=Berlin,OU=Employés,dc=imcsio2,DC=fr"}
-        "Londres" {$office = "OU=Londres,OU=Employés,dc=imcsio2,DC=fr"}
+        "Paris" {$office = "OU=Paris,OU=Employés,dc=m2l,dc=lan"}
+        "Berlin" {$office = "OU=Berlin,OU=Employés,dc=m2l,dc=lan"}
+        "Londres" {$office = "OU=Londres,OU=Employés,dc=m2l,dc=lan"}
         default {$office = $null}    
     }
     
@@ -43,40 +43,40 @@ foreach ($user in $users){
 
    # ********Création des Groupes*********
 
-New-ADGroup -Name Direction -GroupScope Global -GroupCategory Security -Path "ou=Employés,dc=imcsio2,dc=fr"
+New-ADGroup -Name Direction -GroupScope Global -GroupCategory Security -Path "ou=Employés,dc=m2l,dc=lan"
 
-New-ADGroup -Name Sales -GroupScope Global -GroupCategory Security -Path "ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name Traders -GroupScope Global -GroupCategory Security -Path "ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name Secretary -GroupScope Global -GroupCategory Security -Path "ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name Accounting -GroupScope Global -GroupCategory Security -Path "ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name Financial-Consultant -GroupScope Global -GroupCategory Security -Path "ou=Employés,dc=imcsio2,dc=fr"
+New-ADGroup -Name Sales -GroupScope Global -GroupCategory Security -Path "ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name Traders -GroupScope Global -GroupCategory Security -Path "ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name Secretary -GroupScope Global -GroupCategory Security -Path "ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name Accounting -GroupScope Global -GroupCategory Security -Path "ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name Financial-Consultant -GroupScope Global -GroupCategory Security -Path "ou=Employés,dc=m2l,dc=lan"
 
 #*********************Groupes sous Paris************************
 
-New-ADGroup -Name DirectionParis -GroupScope Global -GroupCategory Security -Path "ou=Paris,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name SalesParis -GroupScope Global -GroupCategory Security -Path "ou=Paris,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name TradersParis -GroupScope Global -GroupCategory Security -Path "ou=Paris,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name SecretaryParis -GroupScope Global -GroupCategory Security -Path "ou=Paris,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name AccountingParis -GroupScope Global -GroupCategory Security -Path "ou=Paris,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name Financial-ConsultantParis -GroupScope Global -GroupCategory Security -Path "ou=Paris,ou=Employés,dc=imcsio2,dc=fr"
+New-ADGroup -Name DirectionParis -GroupScope Global -GroupCategory Security -Path "ou=Paris,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name SalesParis -GroupScope Global -GroupCategory Security -Path "ou=Paris,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name TradersParis -GroupScope Global -GroupCategory Security -Path "ou=Paris,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name SecretaryParis -GroupScope Global -GroupCategory Security -Path "ou=Paris,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name AccountingParis -GroupScope Global -GroupCategory Security -Path "ou=Paris,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name Financial-ConsultantParis -GroupScope Global -GroupCategory Security -Path "ou=Paris,ou=Employés,dc=m2l,dc=lan"
 
 #*********************Groupes sous Londres************************
 
-New-ADGroup -Name DirectionLondres -GroupScope Global -GroupCategory Security -Path "ou=Londres,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name SalesLondres -GroupScope Global -GroupCategory Security -Path "ou=Londres,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name TradersLondres -GroupScope Global -GroupCategory Security -Path "ou=Londres,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name SecretaryLondres -GroupScope Global -GroupCategory Security -Path "ou=Londres,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name AccountingLondres -GroupScope Global -GroupCategory Security -Path "ou=Londres,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name Financial-ConsultantLondres -GroupScope Global -GroupCategory Security -Path "ou=Londres,ou=Employés,dc=imcsio2,dc=fr"
+New-ADGroup -Name DirectionLondres -GroupScope Global -GroupCategory Security -Path "ou=Londres,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name SalesLondres -GroupScope Global -GroupCategory Security -Path "ou=Londres,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name TradersLondres -GroupScope Global -GroupCategory Security -Path "ou=Londres,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name SecretaryLondres -GroupScope Global -GroupCategory Security -Path "ou=Londres,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name AccountingLondres -GroupScope Global -GroupCategory Security -Path "ou=Londres,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name Financial-ConsultantLondres -GroupScope Global -GroupCategory Security -Path "ou=Londres,ou=Employés,dc=m2l,dc=lan"
 
 #*********************Groupes sous Berlin************************
 
-New-ADGroup -Name DirectionBerlin -GroupScope Global -GroupCategory Security -Path "ou=Berlin,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name SalesBerlin -GroupScope Global -GroupCategory Security -Path "ou=Berlin,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name TradersBerlin -GroupScope Global -GroupCategory Security -Path "ou=Berlin,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name SecretaryBerlin -GroupScope Global -GroupCategory Security -Path "ou=Berlin,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name AccountingBerlin -GroupScope Global -GroupCategory Security -Path "ou=Berlin,ou=Employés,dc=imcsio2,dc=fr"
-New-ADGroup -Name Financial-ConsultantBerlin -GroupScope Global -GroupCategory Security -Path "ou=Berlin,ou=Employés,dc=imcsio2,dc=fr"
+New-ADGroup -Name DirectionBerlin -GroupScope Global -GroupCategory Security -Path "ou=Berlin,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name SalesBerlin -GroupScope Global -GroupCategory Security -Path "ou=Berlin,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name TradersBerlin -GroupScope Global -GroupCategory Security -Path "ou=Berlin,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name SecretaryBerlin -GroupScope Global -GroupCategory Security -Path "ou=Berlin,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name AccountingBerlin -GroupScope Global -GroupCategory Security -Path "ou=Berlin,ou=Employés,dc=m2l,dc=lan"
+New-ADGroup -Name Financial-ConsultantBerlin -GroupScope Global -GroupCategory Security -Path "ou=Berlin,ou=Employés,dc=m2l,dc=lan"
 
 Import-Module ActiveDirectory
 Import-Module 'Microsoft.PowerShell.Security'
