@@ -5,10 +5,10 @@ $users = Import-Csv -Delimiter ";" -Path "C:\docs\script\importe.csv"
 
 #********************Création des OU********************************
 
-New-ADOrganizationalUnit -Name "Employéss" -Path "dc=imcsio2,dc=fr"
-New-ADOrganizationalUnit -Name "Londress" -Path "ou=Employéss,dc=imcsio2,dc=fr"
-New-ADOrganizationalUnit -Name "Pariss" -Path "ou=Employéss,dc=imcsio2,dc=fr"
-New-ADOrganizationalUnit -Name "Berlinn" -Path "ou=Employéss,dc=imcsio2,dc=fr"
+New-ADOrganizationalUnit -Name "Liguess" -Path "dc=imcsio2,dc=fr"
+New-ADOrganizationalUnit -Name "Londress" -Path "ou=Liguess,dc=imcsio2,dc=fr"
+New-ADOrganizationalUnit -Name "Pariss" -Path "ou=Liguess,dc=imcsio2,dc=fr"
+New-ADOrganizationalUnit -Name "Berlinn" -Path "ou=Liguess,dc=imcsio2,dc=fr"
 
 #*******Ajout de chaque utilisateur dans son OU spécifique*******
 
@@ -24,9 +24,9 @@ foreach ($user in $users){
     
 
     switch($user.office){
-        "Pariss" {$office = "OU=Pariss,OU=Employéss,dc=imcsio2,DC=fr"}
-        "Berlinn" {$office = "OU=Berlinn,OU=Employéss,dc=imcsio2,DC=fr"}
-        "Londress" {$office = "OU=Londress,OU=Employéss,dc=imcsio2,DC=fr"}
+        "Pariss" {$office = "OU=Pariss,OU=Liguess,dc=imcsio2,DC=fr"}
+        "Berlinn" {$office = "OU=Berlinn,OU=Liguess,dc=imcsio2,DC=fr"}
+        "Londress" {$office = "OU=Londress,OU=Liguess,dc=imcsio2,DC=fr"}
         default {$office = $null}    
     }
     
@@ -43,31 +43,31 @@ foreach ($user in $users){
 
    # ********Création des Groupes*********
 
-New-ADGroup -Name Directionn -GroupScope Global -GroupCategory Security -Path "ou=Employéss,dc=imcsio2,dc=fr"
-New-ADGroup -Name Saless -GroupScope Global -GroupCategory Security -Path "ou=Employéss,dc=imcsio2,dc=fr"
-New-ADGroup -Name Traderss -GroupScope Global -GroupCategory Security -Path "ou=Employéss,dc=imcsio2,dc=fr"
-New-ADGroup -Name Secretaryy -GroupScope Global -GroupCategory Security -Path "ou=Employéss,dc=imcsio2,dc=fr"
+New-ADGroup -Name MMAA -GroupScope Global -GroupCategory Security -Path "ou=Liguess,dc=imcsio2,dc=fr"
+New-ADGroup -Name Boxes -GroupScope Global -GroupCategory Security -Path "ou=Liguess,dc=imcsio2,dc=fr"
+New-ADGroup -Name Tenniss -GroupScope Global -GroupCategory Security -Path "ou=Liguess,dc=imcsio2,dc=fr"
+New-ADGroup -Name Judoo -GroupScope Global -GroupCategory Security -Path "ou=Liguess,dc=imcsio2,dc=fr"
 
 #*********************Groupes sous Pariss************************
 
-New-ADGroup -Name DirectionnPariss -GroupScope Global -GroupCategory Security -Path "ou=Pariss,ou=Employéss,dc=imcsio2,dc=fr"
-New-ADGroup -Name SalessPariss -GroupScope Global -GroupCategory Security -Path "ou=Pariss,ou=Employéss,dc=imcsio2,dc=fr"
-New-ADGroup -Name TraderssPariss -GroupScope Global -GroupCategory Security -Path "ou=Pariss,ou=Employéss,dc=imcsio2,dc=fr"
-New-ADGroup -Name SecretaryyPariss -GroupScope Global -GroupCategory Security -Path "ou=Pariss,ou=Employéss,dc=imcsio2,dc=fr"
+New-ADGroup -Name MMAAPariss -GroupScope Global -GroupCategory Security -Path "ou=Pariss,ou=Liguess,dc=imcsio2,dc=fr"
+New-ADGroup -Name BoxesPariss -GroupScope Global -GroupCategory Security -Path "ou=Pariss,ou=Liguess,dc=imcsio2,dc=fr"
+New-ADGroup -Name TennissPariss -GroupScope Global -GroupCategory Security -Path "ou=Pariss,ou=Liguess,dc=imcsio2,dc=fr"
+New-ADGroup -Name JudooPariss -GroupScope Global -GroupCategory Security -Path "ou=Pariss,ou=Liguess,dc=imcsio2,dc=fr"
 
 #*********************Groupes sous Londress************************
 
-New-ADGroup -Name DirectionnLondress -GroupScope Global -GroupCategory Security -Path "ou=Londress,ou=Employéss,dc=imcsio2,dc=fr"
-New-ADGroup -Name SalessLondress -GroupScope Global -GroupCategory Security -Path "ou=Londress,ou=Employéss,dc=imcsio2,dc=fr"
-New-ADGroup -Name TraderssLondress -GroupScope Global -GroupCategory Security -Path "ou=Londress,ou=Employéss,dc=imcsio2,dc=fr"
-New-ADGroup -Name SecretaryyLondress -GroupScope Global -GroupCategory Security -Path "ou=Londress,ou=Employéss,dc=imcsio2,dc=fr"
+New-ADGroup -Name MMAALondress -GroupScope Global -GroupCategory Security -Path "ou=Londress,ou=Liguess,dc=imcsio2,dc=fr"
+New-ADGroup -Name BoxesLondress -GroupScope Global -GroupCategory Security -Path "ou=Londress,ou=Liguess,dc=imcsio2,dc=fr"
+New-ADGroup -Name TennissLondress -GroupScope Global -GroupCategory Security -Path "ou=Londress,ou=Liguess,dc=imcsio2,dc=fr"
+New-ADGroup -Name JudooLondress -GroupScope Global -GroupCategory Security -Path "ou=Londress,ou=Liguess,dc=imcsio2,dc=fr"
 
 #*********************Groupes sous Berlinn************************
 
-New-ADGroup -Name DirectionnBerlinn -GroupScope Global -GroupCategory Security -Path "ou=Berlinn,ou=Employéss,dc=imcsio2,dc=fr"
-New-ADGroup -Name SalessBerlinn -GroupScope Global -GroupCategory Security -Path "ou=Berlinn,ou=Employéss,dc=imcsio2,dc=fr"
-New-ADGroup -Name TraderssBerlinn -GroupScope Global -GroupCategory Security -Path "ou=Berlinn,ou=Employéss,dc=imcsio2,dc=fr"
-New-ADGroup -Name SecretaryyBerlinn -GroupScope Global -GroupCategory Security -Path "ou=Berlinn,ou=Employéss,dc=imcsio2,dc=fr"
+New-ADGroup -Name MMAABerlinn -GroupScope Global -GroupCategory Security -Path "ou=Berlinn,ou=Liguess,dc=imcsio2,dc=fr"
+New-ADGroup -Name BoxesBerlinn -GroupScope Global -GroupCategory Security -Path "ou=Berlinn,ou=Liguess,dc=imcsio2,dc=fr"
+New-ADGroup -Name TennissBerlinn -GroupScope Global -GroupCategory Security -Path "ou=Berlinn,ou=Liguess,dc=imcsio2,dc=fr"
+New-ADGroup -Name JudooBerlinn -GroupScope Global -GroupCategory Security -Path "ou=Berlinn,ou=Liguess,dc=imcsio2,dc=fr"
 
 Import-Module ActiveDirectory
 Import-Module 'Microsoft.PowerShell.Security'
@@ -87,74 +87,74 @@ foreach ($user in $users){
 
 #********Ajout des utilisateurs de Pariss dans leurs groupes********************
 
-if ($Uoffice -eq "Pariss" -and $dept -eq "Directionn"){
+if ($Uoffice -eq "Pariss" -and $dept -eq "MMAA"){
 
-    Add-ADGroupMember -Identity 'DirectionnPariss' -Members $login
-
-}
-elseif ($Uoffice -eq "Pariss" -and $dept -eq "Traderss"){
-
-    Add-ADGroupMember -Identity 'TraderssPariss' -Members $login
+    Add-ADGroupMember -Identity 'MMAAPariss' -Members $login
 
 }
-elseif ($Uoffice -eq "Pariss" -and $dept -eq "Secretaryy"){
+elseif ($Uoffice -eq "Pariss" -and $dept -eq "Tenniss"){
 
-    Add-ADGroupMember -Identity 'SecretaryyPariss' -Members $login
+    Add-ADGroupMember -Identity 'TennissPariss' -Members $login
 
 }
-elseif ($Uoffice -eq "Pariss" -and $dept -eq "Saless"){
+elseif ($Uoffice -eq "Pariss" -and $dept -eq "Judoo"){
 
-    Add-ADGroupMember -Identity 'SalessPariss' -Members $login
+    Add-ADGroupMember -Identity 'JudooPariss' -Members $login
+
+}
+elseif ($Uoffice -eq "Pariss" -and $dept -eq "Boxes"){
+
+    Add-ADGroupMember -Identity 'BoxesPariss' -Members $login
 } 
 
 #********Ajout des utilisateurs de Londress dans leurs groupes********************
 
-if ($Uoffice -eq "Londress" -and $dept -eq "Directionn"){
+if ($Uoffice -eq "Londress" -and $dept -eq "MMAA"){
 
-    Add-ADGroupMember -Identity 'DirectionnLondress' -Members $login
-
-}
-elseif ($Uoffice -eq "Londress" -and $dept -eq "Traderss"){
-
-    Add-ADGroupMember -Identity 'TraderssLondress' -Members $login
+    Add-ADGroupMember -Identity 'MMAALondress' -Members $login
 
 }
-elseif ($Uoffice -eq "Londress" -and $dept -eq "Secretaryy"){
+elseif ($Uoffice -eq "Londress" -and $dept -eq "Tenniss"){
 
-    Add-ADGroupMember -Identity 'SecretaryyLondress' -Members $login
+    Add-ADGroupMember -Identity 'TennissLondress' -Members $login
 
 }
-elseif ($Uoffice -eq "Londress" -and $dept -eq "Saless"){
+elseif ($Uoffice -eq "Londress" -and $dept -eq "Judoo"){
 
-    Add-ADGroupMember -Identity 'SalessLondress' -Members $login
+    Add-ADGroupMember -Identity 'JudooLondress' -Members $login
+
+}
+elseif ($Uoffice -eq "Londress" -and $dept -eq "Boxes"){
+
+    Add-ADGroupMember -Identity 'BoxesLondress' -Members $login
 } 
 #********Ajout des utilisateurs de Berlinn dans leurs groupes********************
 
-if ($Uoffice -eq "Berlinn" -and $dept -eq "Directionn"){
+if ($Uoffice -eq "Berlinn" -and $dept -eq "MMAA"){
 
-    Add-ADGroupMember -Identity 'DirectionnBerlinn' -Members $login
-
-}
-elseif ($Uoffice -eq "Berlinn" -and $dept -eq "Traderss"){
-
-    Add-ADGroupMember -Identity 'TraderssBerlinn' -Members $login
+    Add-ADGroupMember -Identity 'MMAABerlinn' -Members $login
 
 }
-elseif ($Uoffice -eq "Berlinn" -and $dept -eq "Secretaryy"){
+elseif ($Uoffice -eq "Berlinn" -and $dept -eq "Tenniss"){
 
-    Add-ADGroupMember -Identity 'SecretaryyBerlinn' -Members $login
+    Add-ADGroupMember -Identity 'TennissBerlinn' -Members $login
 
 }
-elseif ($Uoffice -eq "Berlinn" -and $dept -eq "Saless"){
+elseif ($Uoffice -eq "Berlinn" -and $dept -eq "Judoo"){
 
-    Add-ADGroupMember -Identity 'SalessBerlinn' -Members $login
+    Add-ADGroupMember -Identity 'JudooBerlinn' -Members $login
+
+}
+elseif ($Uoffice -eq "Berlinn" -and $dept -eq "Boxes"){
+
+    Add-ADGroupMember -Identity 'BoxesBerlinn' -Members $login
 } 
 
 } 
 
 #Ajout des groupes dans les groupes
 
-Add-ADGroupMember -Identity 'Directionn' -Members DirectionnPariss,DirectionnLondress,DirectionnBerlinn
-Add-ADGroupMember -Identity 'Saless' -Members SalessPariss,SalessLondress,SalessBerlinn
-Add-ADGroupMember -Identity 'Traderss'-Members TraderssPariss,TraderssLondress,TraderssBerlinn
-Add-ADGroupMember -Identity 'Secretaryy' -Members SecretaryyPariss,SecretaryyLondress,SecretaryyBerlinn
+Add-ADGroupMember -Identity 'MMAA' -Members MMAAPariss,MMAALondress,MMAABerlinn
+Add-ADGroupMember -Identity 'Boxes' -Members BoxesPariss,BoxesLondress,BoxesBerlinn
+Add-ADGroupMember -Identity 'Tenniss'-Members TennissPariss,TennissLondress,TennissBerlinn
+Add-ADGroupMember -Identity 'Judoo' -Members JudooPariss,JudooLondress,JudooBerlinn
